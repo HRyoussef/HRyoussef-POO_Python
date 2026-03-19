@@ -1,39 +1,48 @@
+#class Animal:
+#    def __init__(self, nom: str, poids: float, taille: int):
+#        self.nom = nom
+#        self.poids = poids
+#        self.taille = taille
+#    def se_deplacer(self):
+#        pass
+
 class Animal:
     def __init__(self, nom: str, poids: float, taille: int):
-        self.nom = nom
-        self.poids = poids
-        self.taille = taille
+        self._nom = nom              # protected
+        self.__poids = None          # private
+        self._taille = taille        # protected
+
+        self.set_poids(poids)        # validation via setter
+
+    # Getter nom
+    def get_nom(self):
+        return self._nom
+
+    # Setter nom
+    def set_nom(self, nom):
+        if not nom:
+            raise ValueError("Le nom ne peut pas être vide")
+        self._nom = nom
+
+    # Getter poids (private)
+    def get_poids(self):
+        return self.__poids
+
+    # Setter poids avec validation
+    def set_poids(self, poids):
+        if poids < 0:
+            raise ValueError("Le poids ne peut pas être négatif")
+        self.__poids = poids
+
+    # Getter taille
+    def get_taille(self):
+        return self._taille
+
+    # Setter taille
+    def set_taille(self, taille):
+        if taille <= 0:
+            raise ValueError("La taille doit être positive")
+        self._taille = taille
+
     def se_deplacer(self):
         pass
-
-
-# Classe enfant Serpent
-class Serpent(Animal):
-    def __init__(self, nom: str, poids: float, taille: int, longueur: float):
-        Animal.__init__(self, nom, poids, taille)  # appelle le constructeur de Animal
-        self.longueur = longueur
-
-    def se_deplacer(self):
-        return f"Le serpent {self.nom} rampe."
-        #pass
-
-# Classe enfant Oiseau
-class Oiseau(Animal):
-    def __init__(self, nom: str, poids: float, taille: int, envergure: float):
-        Animal.__init__(self, nom, poids, taille)
-        self.envergure = envergure
-
-    def se_deplacer(self):
-        return f"L'oiseau {self.nom} vole."
-        #pass
-
-# Création des objets
-souris_verte = Animal(nom='Stewart', poids=0.005, taille=10)
-python_vert = Serpent(nom='Python', poids=15, taille=300, longueur=350)
-perroquet = Oiseau(nom='Coco', poids=0.9, taille=25, envergure=40)
-
-
-# Test
-print(souris_verte.nom, souris_verte.poids, souris_verte.taille)
-print(python_vert.nom, python_vert.se_deplacer(), python_vert.longueur)
-print(perroquet.nom, perroquet.se_deplacer(), perroquet.envergure)

@@ -1,4 +1,4 @@
-from models.Animal import Animal
+from Animal import Animal
 
 class Zoo:
     def __init__(self, animaux: list):

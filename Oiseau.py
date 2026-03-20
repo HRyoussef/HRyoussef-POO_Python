@@ -1,4 +1,4 @@
-from models.Animal import Animal
+from Animal import Animal
 # Classe enfant Oiseau
 class Oiseau(Animal):
     def __init__(self, nom: str, poids: float, taille: int, envergure: float):

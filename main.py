@@ -1,7 +1,7 @@
-from models.Animal import Animal
-from models.Serpent import Serpent
-from models.Oiseau import Oiseau
-from models.Zoo import Zoo
+from Animal import Animal
+from Serpent import Serpent
+from Oiseau import Oiseau
+from Zoo import Zoo
 
 
 ## Création des objets
